@@ -1,0 +1,121 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+
+                <mat-card class="mt-5 mb-5">
+                    <div class="container text-center">
+                        <img src="../../../assets/img/reglogo.png" alt="">
+                    </div>
+
+                    <h1 class="text-center">Register Here !!</h1>
+                    <!-- {{user | json}} -->
+                    <form (ngSubmit)="formSubmit()">
+                        <div class="row">
+                            <!-- firstname field -->
+                            <mat-form-field class="col" appearance="outline">
+                                <mat-label>Firstname</mat-label>
+                                <input [(ngModel)]="user.firstname" name="firstname" type="text" matInput
+                                    placeholder="Enter firstname" required>
+                                <mat-hint>Hint</mat-hint>
+                            </mat-form-field>
+
+                            <!-- lastname field -->
+                            <mat-form-field class="col" appearance="outline">
+                                <mat-label>Lastname</mat-label>
+                                <input [(ngModel)]="user.lastname" name="lastname" type="text" matInput
+                                    placeholder="Enter lastname" required>
+                                <mat-hint>Hint</mat-hint>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- username field -->
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Username</mat-label>
+                            <input [(ngModel)]="user.username" name="username" type="text" matInput
+                                placeholder="Enter username" required>
+                            <mat-hint>Hint</mat-hint>
+                        </mat-form-field>
+
+                        <!-- password field -->
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input [(ngModel)]="user.password" name="password" type="password" matInput
+                                placeholder="Enter password" required>
+                            <mat-hint>Hint</mat-hint>
+                        </mat-form-field>
+
+                        <!-- email field -->
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Email address</mat-label>
+                            <input [(ngModel)]="user.email" name="email" type="email" matInput
+                                placeholder="Enter email address" required>
+                            <mat-hint>Hint</mat-hint>
+                        </mat-form-field>
+
+                        <!-- Phone no. field -->
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Phone No.</mat-label>
+                            <input [(ngModel)]="user.phone" name="phone" type="text" matInput
+                                placeholder="Enter phone number" required>
+                            <mat-hint>Hint</mat-hint>
+                        </mat-form-field>
+
+                        <!-- gender field -->
+                        <div class="my-5 ml-5">
+                            <div class="row">
+                                <div class="col">
+                                    <mat-label>Gender :</mat-label>
+                                    <mat-radio-group [(ngModel)]="user.gender" name="gender"
+                                        aria-label="Select an option" required>
+                                        <mat-radio-button value="M">Male</mat-radio-button>
+                                        <mat-radio-button value="F">Female</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Country State City select -->
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Counrty</mat-label>
+                                    <mat-select [(ngModel)]="user.countryId" name="countryId" required>
+                                        <mat-option #cid *ngFor="let c of countries | keyvalue" [value]="c.key"
+                                            (click)="onChangeCountry(cid.value)">
+                                            {{c.value}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>State</mat-label>
+                                    <mat-select [(ngModel)]="user.stateId" name="stateId" required>
+                                        <mat-option #sid *ngFor="let s of states" [value]="s[0]"
+                                            (click)="onChangeState(sid.value)">{{s[1]}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="col">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>City</mat-label>
+                                    <mat-select [(ngModel)]="user.cityId" name="cityId" required>
+                                        <mat-option *ngFor="let c of cities" [value]="c[0]">{{c[1]}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <!-- buttons -->
+                        <div class="container text-center">
+                            <button type="submit" mat-raised-button color="primary"
+                                class="button-margin">Register</button>
+                            <button type="reset" mat-raised-button color="warn">Clear</button>
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
