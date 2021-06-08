@@ -8,6 +8,9 @@
                 Question</button>
         </div>
     </div>
+
+    <mat-divider></mat-divider>
+    
     <mat-card *ngFor="let q of questions; let i=index" class="mt-10">
         <!-- {{questions|json}} -->
         <mat-card-content>
@@ -27,6 +30,33 @@
             </div>
             <mat-divider></mat-divider>
             <p class="mt-20"><b>Correct Answer : </b>{{q.answer}}</p>
+
+            <!-- <mat-divider></mat-divider>
+
+            <div class="row">
+                <div class="col-md-10 mt-20">
+                    <b>Actions :</b>
+                </div>
+                <div class="col-md-2 mt-10">
+                    <button mat-stroked-button color="primary" [routerLink]="'/admin/update-question/'+q.questId"
+                        class="mr-10" matTooltip="Edit / Update">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-stroked-button color="warn" (click)="deleteQuestion(q.questId)" matTooltip="Delete">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </div> -->
         </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+            <button mat-stroked-button color="primary" [routerLink]="'/admin/update-question/'+q.questId" class="mr-10"
+                matTooltip="Edit / Update">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-stroked-button color="warn" (click)="deleteQuestion(q.questId)" matTooltip="Delete">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-card-actions>
     </mat-card>
 </mat-card>

@@ -1,7 +1,7 @@
 import { Component, NgIterable, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -48,12 +48,12 @@ export class SignupComponent implements OnInit {
     //addUser:userService
     this.userService.addUser(this.user).subscribe(
       (data: any) => {
-        swal("Successfully Done !!", "User id is : " + data.id, "success");
+        swal.fire("Successfully Done !!", "User id is : " + data.id, "success");
         console.log(data);
       },
       (error) => {
         console.log(error);
-        swal("Something went wrong !!", "User not registered.", "error");
+        swal.fire("Something went wrong !!", "User not registered.", "error");
       }
     )
   }

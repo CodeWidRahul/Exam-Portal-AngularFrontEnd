@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { QuizService } from 'src/app/services/quiz.service';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-quiz',
@@ -43,7 +43,7 @@ export class UpdateQuizComponent implements OnInit {
         this.categories = data;
       },
       (error) => {
-        swal('Error !!', 'Error in loading categories', 'error');
+        swal.fire('Error !!', 'Error in loading categories', 'error');
       }
     );
   }
@@ -82,12 +82,12 @@ export class UpdateQuizComponent implements OnInit {
     //update quiz data
     this._quizService.updateQuiz(this.quiz).subscribe(
       (data) => {
-        swal('Success', 'Quiz updated successfully.', 'success').then(e => {
+        swal.fire('Success', 'Quiz updated successfully.', 'success').then(e => {
           this._router.navigate(['/admin/quizzes']);
         });
       },
       (error) => {
-        swal('Error !!', 'Error in updating quiz data!', 'error');
+        swal.fire('Error !!', 'Error in updating quiz data!', 'error');
         console.log(error);
       }
     );

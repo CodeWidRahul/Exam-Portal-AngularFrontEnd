@@ -1,11 +1,11 @@
 <mat-card>
-    <h2>Add New Category</h2>
+    <h2>Update Category</h2>
     <mat-divider></mat-divider>
     <mat-card-content>
         <div class="row">
             <div class="col-md-8 offset-md-2 mt-10">
                 <!-- {{category|json}} -->
-                <form (ngSubmit)="formSubmit()">
+                <form (ngSubmit)="updateCategory()">
                     <mat-form-field appearance="fill" class="mb-20">
                         <mat-label>Title</mat-label>
                         <input matInput type="text" [(ngModel)]="category.title" name="title"
@@ -21,7 +21,7 @@
                     </mat-form-field>
 
                     <div class="container text-center">
-                        <button type="submit" mat-raised-button color="accent">Add</button>
+                        <button type="submit" mat-raised-button color="accent">Update</button>
                     </div>
                 </form>
             </div>

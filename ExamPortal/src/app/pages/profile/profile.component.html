@@ -1,11 +1,12 @@
 <mat-card *ngIf="user">
     <h2>Your Profile Details</h2>
+    <mat-divider></mat-divider>
     <!-- {{user | json}} -->
     <mat-card-content>
         <div class="bootstrap-wrapper">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-10 offset-md-1 text-center">
+                    <div class="col-md-10 offset-md-1 text-center mt-10">
                         <img src="../../../assets/img/user.png" alt="profile picture" class="profile-image" />
                         <h2>{{user.firstname}} {{user.lastname}}</h2>
                     </div>

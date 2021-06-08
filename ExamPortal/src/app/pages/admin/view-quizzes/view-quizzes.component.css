@@ -2,3 +2,21 @@
     background-image: url('../../../../assets/img/quiz.png');
     background-size: cover;
 }
+
+.active {
+    background-color: #00C853 !important;
+}
+
+.inactive {
+    background-color: #FF6F00 !important;
+}
+
+mat-chip {
+    /* background-color: #00C853 !important; */
+    font-size: 13px;
+    min-height: 18px;
+    position: relative;
+    top: -10px;
+    left: -10px;
+    border-radius: 2px;
+}

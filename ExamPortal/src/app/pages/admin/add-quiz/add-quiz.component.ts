@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoryService } from 'src/app/services/category.service';
 import { QuizService } from 'src/app/services/quiz.service';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-quiz',
@@ -34,7 +34,7 @@ export class AddQuizComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        swal("Error !!", "Error in loading categories !", "error");
+        swal.fire("Error !!", "Error in loading categories !", "error");
       }
     );
   }
@@ -74,11 +74,17 @@ export class AddQuizComponent implements OnInit {
     this._quizService.addQuiz(this.quizData).subscribe(
       (data: any) => {
         console.log(data);
-        swal('Success.', 'Quiz added successfully.', 'success');
+        swal.fire('Success.', 'Quiz added successfully.', 'success');
+        this.quizData.title = '';
+        this.quizData.description = '';
+        this.quizData.maxMarks = '';
+        this.quizData.numberOfQuestions = '';
+        this.quizData.active = false;
+        this.quizData.category.cid = '';
       },
       (error) => {
         console.log(error);
-        swal('Error !!', 'Server error.', 'error');
+        swal.fire('Error !!', 'Server error.', 'error');
       }
     );
   }

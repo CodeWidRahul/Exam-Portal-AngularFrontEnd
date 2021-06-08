@@ -1,7 +1,6 @@
 <mat-card>
-    <h2>Add Question To '{{title | uppercase}}'</h2>
+    <h2>Update Question To '{{question.quiz.title | uppercase}}'</h2>
     <!-- {{question|json}} -->
-
     <mat-divider></mat-divider>
 
     <mat-card-header>
@@ -9,7 +8,7 @@
     </mat-card-header>
 
     <mat-card-content>
-        <form (ngSubmit)="addQuestion()">
+        <form (ngSubmit)="updateQuestion()">
             <mat-form-field appearance="fill">
                 <mat-label>Write Question Content</mat-label>
                 <textarea matInput [(ngModel)]="question.content" name="content" placeholder="Enter here" rows="5"
@@ -71,7 +70,7 @@
             </mat-form-field>
 
             <div class="container text-center mt-20">
-                <button mat-raised-button color="accent">Add</button>
+                <button mat-raised-button color="accent">Update</button>
             </div>
         </form>
     </mat-card-content>

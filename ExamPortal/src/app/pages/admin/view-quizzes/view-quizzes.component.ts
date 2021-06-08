@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from 'src/app/services/quiz.service';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-quizzes',
@@ -21,35 +21,38 @@ export class ViewQuizzesComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        swal('Error !!', 'Error in loading data.', 'error');
+        swal.fire('Error !!', 'Error in loading data.', 'error');
       }
     );
   }
 
   deleteQuiz(qId: number) {
 
-    swal({
-      icon: "warning",
+    swal.fire({
+      icon: 'warning',
       title: 'Are you sure ?',
-      text: "Once deleted, you will not be able to recover this data!",
-      buttons: ["Cancel", "Delete"],
-      dangerMode: true,
+      text: 'Once deleted, you will not be able to recover this data!',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it',
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
     })
       .then((willDelete) => {
-        if (willDelete) {
+        if (willDelete.isConfirmed) {
           this._quizService.deleteQuiz(qId).subscribe(
             (data) => {
               console.log(data);
               this.quizzes = this.quizzes.filter((quiz: any) => quiz.qid != qId);
-              swal('Sucess', 'Quiz deleted.', 'success');
+              swal.fire('Sucess', 'Quiz deleted.', 'success');
             },
             (error) => {
               console.log(error);
-              swal('Error', 'Server problem !', 'error')
+              swal.fire('Error', 'Server problem !', 'error')
             }
           )
         } else {
-          swal("Quiz data is safe!");
+          swal.fire("Quiz data is safe!");
         }
       });
   }

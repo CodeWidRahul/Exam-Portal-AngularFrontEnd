@@ -2,6 +2,8 @@
     <mat-action-list>
         <div mat-subheader>Menu</div>
 
+        <mat-divider></mat-divider>
+
         <button mat-list-item routerLink="/admin">
             <mat-icon mat-list-icon>dashboard</mat-icon> Dashboard
         </button>
@@ -26,7 +28,7 @@
             <mat-icon mat-list-icon>add</mat-icon> Add Quiz
         </button>
 
-        <button mat-list-item>
+        <button mat-list-item (click)="logout()">
             <mat-icon mat-list-icon>logout</mat-icon> Logout
         </button>
 

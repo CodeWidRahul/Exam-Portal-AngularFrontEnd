@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionService } from 'src/app/services/question.service';
 import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-add-question',
-  templateUrl: './add-question.component.html',
-  styleUrls: ['./add-question.component.css']
+  selector: 'app-update-question',
+  templateUrl: './update-question.component.html',
+  styleUrls: ['./update-question.component.css']
 })
-export class AddQuestionComponent implements OnInit {
+export class UpdateQuestionComponent implements OnInit {
 
-  qId = 0;
-  title = '';
+  questionId = 0;
   question: any = {
     quiz: {},
     content: '',
@@ -24,15 +23,27 @@ export class AddQuestionComponent implements OnInit {
     image: ''
   };
 
-  constructor(private _route: ActivatedRoute, private _questionService: QuestionService, private _snackbar: MatSnackBar) { }
+  constructor(
+    private _route: ActivatedRoute,
+    private _questionService: QuestionService,
+    private _snackbar: MatSnackBar,
+    private _router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.qId = this._route.snapshot.params.qid;
-    this.question.quiz['qid'] = this.qId;
-    this.title = this._route.snapshot.params.title;
+    this.questionId = this._route.snapshot.params.questId;
+    this._questionService.getQuestion(this.questionId).subscribe(
+      (data) => {
+        console.log(data);
+        this.question = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
-  addQuestion() {
+  updateQuestion() {
     if (this.question.content.trim() == '' || this.question.content == null) {
       this._snackbar.open('Content is required !', 'Error', {
         duration: 3000
@@ -71,22 +82,17 @@ export class AddQuestionComponent implements OnInit {
     }
 
     //saving data
-    this._questionService.addQuestion(this.question).subscribe(
+    this._questionService.updateQuestion(this.question).subscribe(
       (data: any) => {
         console.log(data);
-        swal.fire('Success', 'Question added successfully.', 'success');
-        this.question.content = '';
-        this.question.option1 = '';
-        this.question.option2 = '';
-        this.question.option3 = '';
-        this.question.option4 = '';
-        this.question.answer = '';
+        swal.fire('Success', 'Question updated successfully.', 'success').then(e => {
+          this._router.navigate(['/admin/view-questions/' + this.question.quiz.qid + '/' + this.question.quiz.title]);
+        });
       },
       (error) => {
         console.log(error);
-        swal.fire('Error !', 'Failed to save question !', 'error');
+        swal.fire('Error !', 'Failed to update question !', 'error');
       }
     );
   }
-
 }

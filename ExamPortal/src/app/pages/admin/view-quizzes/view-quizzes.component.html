@@ -1,6 +1,11 @@
 <mat-card *ngFor="let q of quizzes" class="mb-10">
     <!-- {{q.qid}} -->
+    <mat-chip-list>
+        <mat-chip selected [ngClass]="q.active?'active' : 'inactive'"
+            [innerHTML]="q.active?'Published' : 'Not Published'"></mat-chip>
+    </mat-chip-list>
     <mat-card-header>
+
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{q.title}}</mat-card-title>
         <mat-card-subtitle>{{q.category.title}}</mat-card-subtitle>
@@ -8,18 +13,34 @@
     <mat-card-content>
         <p>{{q.description}}</p>
     </mat-card-content>
+
+    <mat-divider></mat-divider>
+
     <mat-card-actions>
-        <button mat-flat-button [routerLink]="'/admin/view-questions/'+q.qid+'/'+q.title"
-            color="accent">Questions</button>
-        <button mat-stroked-button color="accent" class="ml-20">Max Marks: {{q.maxMarks}}</button>
-        <button mat-stroked-button color="accent" class="ml-20">Questions: {{q.numberOfQuestions}}</button>
-        <button mat-flat-button color="accent" class="ml-20">Attempts</button>
-        <button mat-mini-fab color="accent" matTooltip="Update Quiz" [routerLink]="'/admin/quiz/'+q.qid" class="ml-20">
-            <mat-icon>edit_note</mat-icon>
-        </button>
-        <button mat-mini-fab color="warn" matTooltip="Delete Quiz" (click)="deleteQuiz(q.qid)" class="ml-20">
-            <mat-icon>delete</mat-icon>
-        </button>
+        <div class="row">
+            <div class="col-sm-10">
+                <button mat-flat-button [routerLink]="'/admin/view-questions/'+q.qid+'/'+q.title"
+                    color="accent">Questions</button>
+                <button mat-stroked-button color="accent" class="ml-20">Max Marks: {{q.maxMarks}}</button>
+                <button mat-stroked-button color="accent" class="ml-20">Questions: {{q.numberOfQuestions}}</button>
+
+                <button mat-flat-button color="accent" class="ml-20">Attempts</button>
+
+                <!-- <mat-slide-toggle class="ml-20" name="active" [ngModel]="q.active" [ngClass]="q.active?'active' : ''">
+                    <span [innerHTML]="q.active?'Published' : 'Not Published'"></span>
+                </mat-slide-toggle> -->
+            </div>
+
+            <div class="col-sm-2">
+                <button mat-stroked-button color="primary" matTooltip="Edit / Update Quiz"
+                    [routerLink]="'/admin/quiz/'+q.qid">
+                    <mat-icon>edit_note</mat-icon>
+                </button>
+                <button mat-stroked-button color="warn" matTooltip="Delete Quiz" (click)="deleteQuiz(q.qid)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
     </mat-card-actions>
 </mat-card>
 <div class="container text-center mt-20">
