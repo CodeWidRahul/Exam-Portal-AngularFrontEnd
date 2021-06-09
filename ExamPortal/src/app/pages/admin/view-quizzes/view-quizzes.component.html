@@ -4,10 +4,12 @@
         <mat-chip selected [ngClass]="q.active?'active' : 'inactive'"
             [innerHTML]="q.active?'Published' : 'Not Published'"></mat-chip>
     </mat-chip-list>
+
     <mat-card-header>
 
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{q.title}}</mat-card-title>
+        <div *ngIf="q.active" class="dot"></div>
         <mat-card-subtitle>{{q.category.title}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
@@ -20,11 +22,11 @@
         <div class="row">
             <div class="col-sm-10">
                 <button mat-flat-button [routerLink]="'/admin/view-questions/'+q.qid+'/'+q.title"
-                    color="accent">Questions</button>
-                <button mat-stroked-button color="accent" class="ml-20">Max Marks: {{q.maxMarks}}</button>
-                <button mat-stroked-button color="accent" class="ml-20">Questions: {{q.numberOfQuestions}}</button>
+                    color="primary">Questions</button>
+                <button mat-stroked-button color="primary" class="ml-20">Max Marks: {{q.maxMarks}}</button>
+                <button mat-stroked-button color="primary" class="ml-20">Questions: {{q.numberOfQuestions}}</button>
 
-                <button mat-flat-button color="accent" class="ml-20">Attempts</button>
+                <button mat-stroked-button color="primary" class="ml-20">Attempts</button>
 
                 <!-- <mat-slide-toggle class="ml-20" name="active" [ngModel]="q.active" [ngClass]="q.active?'active' : ''">
                     <span [innerHTML]="q.active?'Published' : 'Not Published'"></span>
@@ -44,5 +46,5 @@
     </mat-card-actions>
 </mat-card>
 <div class="container text-center mt-20">
-    <button mat-raised-button color="accent" routerLink="/admin/add-quiz">Add New Quiz</button>
+    <button mat-raised-button color="primary" routerLink="/admin/add-quiz">Add New Quiz</button>
 </div>

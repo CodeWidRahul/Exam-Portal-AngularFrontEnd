@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionService } from 'src/app/services/question.service';
 import swal from 'sweetalert2';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-update-question',
@@ -10,6 +11,8 @@ import swal from 'sweetalert2';
   styleUrls: ['./update-question.component.css']
 })
 export class UpdateQuestionComponent implements OnInit {
+
+  public Editor = ClassicEditor;
 
   questionId = 0;
   question: any = {

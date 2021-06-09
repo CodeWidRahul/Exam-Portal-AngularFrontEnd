@@ -40,6 +40,7 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatTableModule,
     MatSlideToggleModule,
     MatTooltipModule,
-    MatChipsModule
+    MatChipsModule,
+    CKEditorModule
   ],
   providers: [AuthInterceptorProviders],
   bootstrap: [AppComponent]

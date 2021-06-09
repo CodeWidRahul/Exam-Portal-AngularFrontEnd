@@ -4,8 +4,67 @@
     <!-- {{user | json}} -->
     <mat-card-content>
         <div class="bootstrap-wrapper">
-            <div class="container">
+            <div class="container text-center">
                 <div class="row">
+                    <div class="col-md-4 mt-10">
+                        <mat-card>
+                            <img src="../../../assets/img/user.png" alt="profile picture" class="profile-image" />
+                            <h2>{{user.firstname}} {{user.lastname}}</h2>
+                            <mat-divider></mat-divider>
+                            <br>
+                            <p>
+                                <mat-icon>admin_panel_settings</mat-icon>{{user.authorities[0].authority}}
+                            </p>
+                            <p>
+                                <mat-icon>email</mat-icon>{{user.email}}
+                            </p>
+                        </mat-card>
+                    </div>
+                    <div class="col-md-8 mt-10">
+                        <mat-card class="card">
+                            <i>Profile Details</i>
+                            <mat-divider></mat-divider>
+                            <mat-card class="mt-10">
+                                <mat-icon>person</mat-icon>{{user.firstname}} {{user.lastname}}
+                            </mat-card>
+                            <mat-card class="mt-10">
+                                <mat-icon>manage_accounts</mat-icon>{{user.username}}
+                            </mat-card>
+                            <mat-card class="mt-10">
+                                <mat-icon [innerHTML]="(user.gender=='M')?'male':'female'"></mat-icon>
+                                {{user.gender=='M'?'Male':'Female'}}
+                            </mat-card>
+                            <mat-card class="mt-10">
+                                <mat-icon>email</mat-icon>{{user.email}}
+                            </mat-card>
+                            <mat-card class="mt-10">
+                                <mat-icon>phone_android</mat-icon>{{user.phone}}
+                            </mat-card>
+                            <mat-card class="mt-10">
+                                <mat-icon>admin_panel_settings</mat-icon>{{user.authorities[0].authority}}
+                            </mat-card>
+                            <mat-card class="mt-10">
+                                <mat-icon [innerHTML]="user.enabled?'toggle_on':'toggle_off'"></mat-icon>
+                                {{user.enabled?'ACTIVE':'NOT ACTIVE'}}
+                            </mat-card>
+                        </mat-card>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mt-10">
+                    </div>
+                    <div class="col-md-8 mt-10">
+                        <mat-card>
+                            <i>Actions</i>
+                            <mat-divider></mat-divider>
+                            <mat-card-actions class="text-center">
+                                <button mat-raised-button color="primary">UPDATE</button>
+                                <button mat-raised-button color="accent">SHARE</button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                </div>
+                <!-- <div class="row">
                     <div class="col-md-10 offset-md-1 text-center mt-10">
                         <img src="../../../assets/img/user.png" alt="profile picture" class="profile-image" />
                         <h2>{{user.firstname}} {{user.lastname}}</h2>
@@ -40,12 +99,12 @@
                             </tr>
                         </table>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </mat-card-content>
-    <mat-card-actions class="text-center">
+    <!-- <mat-card-actions class="text-center">
         <button mat-raised-button color="primary">UPDATE</button>
         <button mat-raised-button color="accent">SHARE</button>
-    </mat-card-actions>
+    </mat-card-actions> -->
 </mat-card>

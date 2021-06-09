@@ -1,8 +1,7 @@
 .profile-image {
     width: 150px;
     height: 150px;
-    border: 1px solid #ff4081;
-    border-radius: 50%;
+    border: 2px solid #FAFAFA;
 }
 
 table {
@@ -13,4 +12,53 @@ table {
 table tr td, th {
     padding: 10px 20px;
     border: 0.5px solid #e2e2e2;
+}
+
+.card>mat-card {
+    background-color: #FAFAFA;
+    text-align: left;
+    height: auto;
+    max-height: 40px;
+    line-height: 0px;
+}
+
+mat-card:nth-child(4) {
+    width: auto;
+    max-width: 600px;
+}
+
+mat-card:nth-child(5) {
+    width: auto;
+    max-width: 550px;
+}
+
+mat-card:nth-child(6) {
+    width: auto;
+    max-width: 500px;
+}
+
+mat-card:nth-child(7) {
+    width: auto;
+    max-width: 450px;
+}
+
+mat-card:nth-child(8) {
+    width: auto;
+    max-width: 400px;
+}
+
+mat-card:nth-child(9) {
+    width: auto;
+    max-width: 350px;
+}
+
+mat-card:nth-child(10) {
+    width: auto;
+    max-width: 300px;
+}
+
+mat-icon {
+    font-size: 15px;
+    margin-right: 5px;
+    line-height: 5px;
 }

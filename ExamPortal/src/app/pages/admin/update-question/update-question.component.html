@@ -9,12 +9,15 @@
 
     <mat-card-content>
         <form (ngSubmit)="updateQuestion()">
-            <mat-form-field appearance="fill">
+            <ckeditor [editor]="Editor" [(ngModel)]="question.content" name="content">
+            </ckeditor>
+            <mat-hint>Question required *</mat-hint>
+            <!-- <mat-form-field appearance="fill">
                 <mat-label>Write Question Content</mat-label>
                 <textarea matInput [(ngModel)]="question.content" name="content" placeholder="Enter here" rows="5"
                     required></textarea>
                 <mat-hint>Question required *</mat-hint>
-            </mat-form-field>
+            </mat-form-field> -->
 
             <div class="row">
                 <div class="col-md-6">
@@ -70,7 +73,7 @@
             </mat-form-field>
 
             <div class="container text-center mt-20">
-                <button mat-raised-button color="accent">Update</button>
+                <button mat-raised-button color="primary">Update</button>
             </div>
         </form>
     </mat-card-content>

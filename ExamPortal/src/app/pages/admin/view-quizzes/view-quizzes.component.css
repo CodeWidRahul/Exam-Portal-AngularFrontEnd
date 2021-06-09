@@ -20,3 +20,42 @@ mat-chip {
     left: -10px;
     border-radius: 2px;
 }
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    position: relative;
+    top: 6px;
+    animation: indicator 2s infinite ease-out;
+    -webkit-animation: indicator 2s infinite ease-out;
+    -moz-animation: indicator 2s infinite ease-out;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+
+@keyframes indicator {
+    0%, 50% {
+        background-color: #00C853;
+    }
+    51%, 100% {
+        background-color: none;
+    }
+}
+
+@-webkit-keyframes indicator {
+    0%, 50% {
+        background-color: #00C853;
+    }
+    51%, 100% {
+        background-color: none;
+    }
+}
+
+@-moz-keyframes indicator {
+    0%, 50% {
+        background-color: #00C853;
+    }
+    51%, 100% {
+        background-color: none;
+    }
+}
