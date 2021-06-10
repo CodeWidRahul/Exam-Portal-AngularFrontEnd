@@ -53,18 +53,18 @@ export class AddQuestionComponent implements OnInit {
       });
       return;
     }
-    else if (this.question.option3.trim() == '' || this.question.option3 == null) {
-      this._snackbar.open('Option3 is required !', 'Error', {
-        duration: 3000
-      });
-      return;
-    }
-    else if (this.question.option4.trim() == '' || this.question.option4 == null) {
-      this._snackbar.open('Option4 is required !', 'Error', {
-        duration: 3000
-      });
-      return;
-    }
+    // else if (this.question.option3.trim() == '' || this.question.option3 == null) {
+    //   this._snackbar.open('Option3 is required !', 'Error', {
+    //     duration: 3000
+    //   });
+    //   return;
+    // }
+    // else if (this.question.option4.trim() == '' || this.question.option4 == null) {
+    //   this._snackbar.open('Option4 is required !', 'Error', {
+    //     duration: 3000
+    //   });
+    //   return;
+    // }
     else if (this.question.answer.trim() == '' || this.question.answer == null) {
       this._snackbar.open('Answer is required !', 'Error', {
         duration: 3000

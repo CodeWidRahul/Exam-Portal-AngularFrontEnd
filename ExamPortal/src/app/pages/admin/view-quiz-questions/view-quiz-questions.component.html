@@ -10,22 +10,22 @@
     </div>
 
     <mat-divider></mat-divider>
-    
+
     <mat-card *ngFor="let q of questions; let i=index" class="mt-10">
         <!-- {{questions|json}} -->
         <mat-card-content>
-            <p>
+            <div>
                 <b>Q. {{i+1}}</b>
-                <span class="ml-20">{{q.content}}</span>
-            </p>
+                <span class="ml-20" [innerHTML]="q.content"></span>
+            </div>
             <div class="container">
                 <div class="row">
                     <p class="col-md-6"><b>( i ) </b>{{q.option1}}</p>
                     <p class="col-md-6"><b>( ii ) </b>{{q.option2}}</p>
                 </div>
                 <div class="row">
-                    <p class="col-md-6"><b>( iii ) </b>{{q.option3}}</p>
-                    <p class="col-md-6"><b>( iv ) </b>{{q.option4}}</p>
+                    <p class="col-md-6" *ngIf="q.option3 != null"><b>( iii ) </b>{{q.option3}}</p>
+                    <p class="col-md-6" *ngIf="q.option4 != null"><b>( iv ) </b>{{q.option4}}</p>
                 </div>
             </div>
             <mat-divider></mat-divider>
